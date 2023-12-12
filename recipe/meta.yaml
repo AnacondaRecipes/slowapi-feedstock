@@ -23,6 +23,7 @@ requirements:
   run:
     - python >=3.7,<4.0
     - limits >=2.3
+    - starlette
   run_constrained:
     - redis-py >=3.4.1,<4.0.0
 
