@@ -1,0 +1,50 @@
+{% set name = "slowapi" %}
+{% set version = "0.1.8" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/slowapi-{{ version }}.tar.gz
+  sha256: 8cc268f5a7e3624efa3f7bd2859b895f9f2376c4ed4e0378dd2f7f3343ca608e
+
+build:
+  noarch: python
+  script: {{ PYTHON }} -m pip install --no-deps --no-build-isolation . -vv
+  number: 0
+
+requirements:
+  host:
+    - python >=3.7,<4.0
+    - poetry-core >=1.0.0
+    - pip
+    - starlette
+  run:
+    - python >=3.7,<4.0
+    - limits >=2.3
+    - starlette
+  run_constrained:
+    - redis-py >=3.4.1,<4.0.0
+
+test:
+  imports:
+    - slowapi
+    - starlette
+  commands:
+    - pip check
+  requires:
+    - pip
+
+about:
+  home: https://github.com/laurents/slowapi
+  summary: A rate limiting extension for Starlette and Fastapi
+  license: MIT
+  license_file: LICENSE
+
+extra:
+  anaconda-services:
+    ref: https://anaconda.zendesk.com/agent/tickets/43927
+    reason: Client request
+  recipe-maintainers:
+    - ianaobi
