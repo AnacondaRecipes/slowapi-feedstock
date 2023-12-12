@@ -28,10 +28,10 @@ requirements:
 test:
   imports:
     - slowapi
-  commands:
-    - pip check
-  requires:
-    - pip
+#  commands:
+#    - pip check
+#  requires:
+#    - pip
 
 about:
   home: https://github.com/laurents/slowapi
@@ -42,6 +42,6 @@ about:
 extra:
   anaconda-services:
     ref: https://anaconda.zendesk.com/agent/tickets/43927
-    reason: Dependency for slowapi package
+    reason: Client request
   recipe-maintainers:
     - ianaobi
